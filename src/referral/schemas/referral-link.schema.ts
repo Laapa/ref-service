@@ -33,4 +33,4 @@ export class ReferralLink {
   usedAt?: Date;
 }
 
-export const ReferralLinkSchema = SchemaFactory.createForClass(ReferralLink); 
+export const ReferralLinkSchema = SchemaFactory.createForClass(ReferralLink);

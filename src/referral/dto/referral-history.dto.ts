@@ -50,4 +50,4 @@ export class ReferralHistoryResponseDto {
 
   @ApiProperty({ description: 'Общая сумма заработанных комиссий' })
   totalEarned: number;
-} 
+}

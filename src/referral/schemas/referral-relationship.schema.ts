@@ -30,4 +30,4 @@ export class ReferralRelationship {
   transactionCount: number;
 }
 
-export const ReferralRelationshipSchema = SchemaFactory.createForClass(ReferralRelationship); 
+export const ReferralRelationshipSchema = SchemaFactory.createForClass(ReferralRelationship);

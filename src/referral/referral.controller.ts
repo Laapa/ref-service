@@ -57,7 +57,12 @@ export class ReferralController {
   @ApiOperation({ summary: 'Получить историю начислений реферальных комиссий' })
   @ApiQuery({ name: 'referrerId', description: 'ID реферера', type: 'string' })
   @ApiQuery({ name: 'page', description: 'Номер страницы', type: 'number', required: false })
-  @ApiQuery({ name: 'limit', description: 'Количество записей на странице', type: 'number', required: false })
+  @ApiQuery({
+    name: 'limit',
+    description: 'Количество записей на странице',
+    type: 'number',
+    required: false,
+  })
   @ApiResponse({
     status: 200,
     description: 'История начислений получена успешно',
@@ -93,4 +98,4 @@ export class ReferralController {
     await this.referralService.validateAndUseReferralCode(body.code, body.userId);
     return { message: 'Referral code validated and used successfully' };
   }
-} 
+}

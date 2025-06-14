@@ -15,4 +15,4 @@ export interface ReferralCommissionEvent {
   commissionAmount: number;
   originalAmount: number;
   timestamp: Date;
-} 
+}

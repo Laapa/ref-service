@@ -33,4 +33,4 @@ import { ReferralModule } from '@referral/referral.module';
     },
   ],
 })
-export class AppModule {} 
+export class AppModule {}

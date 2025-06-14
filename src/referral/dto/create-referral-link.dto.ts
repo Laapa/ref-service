@@ -12,4 +12,4 @@ export class CreateReferralLinkDto {
   @IsNumber()
   @Min(1)
   expirationDays?: number;
-} 
+}

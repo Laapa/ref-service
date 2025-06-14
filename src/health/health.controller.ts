@@ -14,4 +14,4 @@ export class HealthController {
       service: 'referral-service',
     };
   }
-} 
+}

@@ -56,7 +56,7 @@ export class ReferralService {
     try {
       // Проверяем, существует ли реферальная связь
       const relationship = await this.referralRepository.findReferralRelationship(dto.userId);
-      
+
       if (!relationship) {
         this.logger.warn(`No referral relationship found for user ${dto.userId}`);
         return;
@@ -64,7 +64,7 @@ export class ReferralService {
 
       // Вычисляем комиссию
       const commissionAmount = dto.amount * this.referralConfig.commissionRate;
-      
+
       // Создаем запись в истории комиссий
       await this.referralRepository.createCommissionHistory({
         transactionId: dto.transactionId,
@@ -90,7 +90,7 @@ export class ReferralService {
       );
     } catch (error) {
       this.logger.error(`Error processing referral commission: ${error.message}`, error.stack);
-      
+
       // Создаем запись об ошибке
       const relationship = await this.referralRepository.findReferralRelationship(dto.userId);
       if (relationship) {
@@ -145,7 +145,7 @@ export class ReferralService {
 
   async validateAndUseReferralCode(code: string, userId: string): Promise<void> {
     const referralLink = await this.referralRepository.findReferralLinkByCode(code);
-    
+
     if (!referralLink) {
       throw new BusinessException('Реферальный код не найден или неактивен');
     }
@@ -178,10 +178,12 @@ export class ReferralService {
     // Обновляем использование реферальной ссылки
     await this.referralRepository.updateReferralLinkUsage(code, userId);
 
-    this.logger.log(`User ${userId} joined via referral code ${code} from ${referralLink.referrerId}`);
+    this.logger.log(
+      `User ${userId} joined via referral code ${code} from ${referralLink.referrerId}`,
+    );
   }
 
   private generateReferralCode(): string {
     return uuidv4().replace(/-/g, '').substring(0, 8).toUpperCase();
   }
-} 
+}

@@ -62,7 +62,7 @@ async function bootstrap() {
   console.log(`🎯 Health Check: http://localhost:${port}/health`);
 }
 
-bootstrap().catch((error) => {
+bootstrap().catch(error => {
   console.error('❌ Error starting the application:', error);
   process.exit(1);
-}); 
+});

@@ -32,4 +32,4 @@ export class TransactionEventDto {
   @IsOptional()
   @IsString()
   referralBy?: string;
-} 
+}

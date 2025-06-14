@@ -39,4 +39,4 @@ export class CommissionHistory {
   failureReason?: string;
 }
 
-export const CommissionHistorySchema = SchemaFactory.createForClass(CommissionHistory); 
+export const CommissionHistorySchema = SchemaFactory.createForClass(CommissionHistory);

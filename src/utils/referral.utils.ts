@@ -23,7 +23,8 @@ export function calculateReferralCommission(
   referralCommissionRate: number,
 ): ReferralCommissionCalculation {
   const commissionAmount = transactionAmount * referralCommissionRate;
-  const adjustedServiceCommission = transactionAmount * (serviceCommissionRate - referralCommissionRate);
+  const adjustedServiceCommission =
+    transactionAmount * (serviceCommissionRate - referralCommissionRate);
 
   return {
     commissionAmount,
@@ -41,11 +42,11 @@ export function calculateReferralCommission(
 export function generateReferralCode(length: number = 8): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = '';
-  
+
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  
+
   return result;
 }
 
@@ -84,7 +85,10 @@ export function validateReferralEligibility(
   hasExistingReferral: boolean,
 ): { isValid: boolean; reason?: string } {
   if (userId === referrerId) {
-    return { isValid: false, reason: 'Пользователь не может использовать собственный реферальный код' };
+    return {
+      isValid: false,
+      reason: 'Пользователь не может использовать собственный реферальный код',
+    };
   }
 
   if (hasExistingReferral) {
@@ -108,6 +112,6 @@ export function formatReferralLink(
 ): string {
   const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  
+
   return `${cleanBaseUrl}${cleanPath}?ref=${code}`;
-} 
+}

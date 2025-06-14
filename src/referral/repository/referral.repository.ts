@@ -1,18 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import {
-  ReferralLink,
-  ReferralLinkDocument,
-} from '../schemas/referral-link.schema';
+import { ReferralLink, ReferralLinkDocument } from '../schemas/referral-link.schema';
 import {
   ReferralRelationship,
   ReferralRelationshipDocument,
 } from '../schemas/referral-relationship.schema';
-import {
-  CommissionHistory,
-  CommissionHistoryDocument,
-} from '../schemas/commission-history.schema';
+import { CommissionHistory, CommissionHistoryDocument } from '../schemas/commission-history.schema';
 
 @Injectable()
 export class ReferralRepository {
@@ -98,7 +92,7 @@ export class ReferralRepository {
     limit: number = 10,
   ): Promise<{ history: CommissionHistoryDocument[]; total: number }> {
     const skip = (page - 1) * limit;
-    
+
     const [history, total] = await Promise.all([
       this.commissionHistoryModel
         .find({ referrerId })
@@ -130,17 +124,15 @@ export class ReferralRepository {
     failureReason?: string,
   ): Promise<void> {
     const updateData: any = { status };
-    
+
     if (processedAt) {
       updateData.processedAt = processedAt;
     }
-    
+
     if (failureReason) {
       updateData.failureReason = failureReason;
     }
 
-    await this.commissionHistoryModel
-      .updateOne({ transactionId }, updateData)
-      .exec();
+    await this.commissionHistoryModel.updateOne({ transactionId }, updateData).exec();
   }
-} 
+}

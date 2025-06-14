@@ -6,4 +6,4 @@ export class RpcExceptionFilter implements ExceptionFilter {
   catch(exception: any, host: ArgumentsHost): Observable<any> {
     return throwError(() => exception);
   }
-} 
+}

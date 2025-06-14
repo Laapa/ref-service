@@ -76,4 +76,4 @@ export default () => ({
     baseCommissionRate: parseFloat(process.env.BASE_COMMISSION_RATE || '0.05'), // 5%
     linkExpirationDays: parseInt(process.env.LINK_EXPIRATION_DAYS || '30', 10),
   },
-}); 
+});
